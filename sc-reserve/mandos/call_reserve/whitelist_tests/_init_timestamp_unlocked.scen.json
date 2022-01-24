@@ -1,0 +1,16 @@
+{
+    "name": "call reserve",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "_init_wlts_locked.scen.json"
+        },
+        {
+            "step": "setState",
+            "comment": "only set block info this time",
+            "currentBlockInfo": {
+                "blockTimestamp": "1001"
+            }
+        }
+    ]
+}

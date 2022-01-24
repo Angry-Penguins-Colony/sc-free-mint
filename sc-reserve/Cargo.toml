@@ -1,0 +1,15 @@
+[package]
+name = "nft"
+version = "1.0.0"
+authors = [ "Théo Farnole"]
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/nft_reservation.rs"
+
+[dependencies.elrond-wasm]
+version = "0.22.10"
+
+[dev-dependencies.elrond-wasm-debug]
+version = "0.22.10"

@@ -1,0 +1,15 @@
+[package]
+name = "nft-meta"
+version = "1.0.0"
+authors = [ "Théo Farnole"]
+edition = "2021"
+publish = false
+
+[dependencies.nft]
+path = ".."
+
+[dependencies.elrond-wasm]
+version = "0.22.10"
+
+[dependencies.elrond-wasm-debug]
+version = "0.22.10"

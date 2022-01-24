@@ -1,0 +1,79 @@
+{
+    "name": "call reserve with another token must cancel transaction",
+    "steps": [
+        {
+            "step": "setState",
+            "accounts": {
+                "address:sc_creator": {
+                    "nonce": "0",
+                    "balance": "1,000",
+                    "storage": {}
+                },
+                "address:user": {
+                    "nonce": "0",
+                    "balance": "20,000",
+                    "storage": {},
+                    "esdt": {
+                        "str:another_token": "20,000"
+                    }
+                }
+            },
+            "newAddresses": [
+                {
+                    "creatorAddress": "address:sc_creator",
+                    "creatorNonce": "0",
+                    "newAddress": "sc:nft"
+                }
+            ]
+        },
+        {
+            "step": "scDeploy",
+            "txId": "deploy",
+            "tx": {
+                "from": "address:sc_creator",
+                "contractCode": "file:../output/nft.wasm",
+                "value": "0",
+                "arguments": [
+                    "2,000",
+                    "500",
+                    "5",
+                    "0",
+                    "0",
+                    "0"
+                ],
+                "gasLimit": "10,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "status": "0",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "scCall",
+            "txId": "lol",
+            "tx": {
+                "from": "address:user",
+                "to": "sc:nft",
+                "value": "0",
+                "function": "reserveNft",
+                "arguments": [],
+                "gasLimit": "10,000,000",
+                "gasPrice": "0",
+                "esdt": [
+                    {
+                        "tokenIdentifier": "str:another_token",
+                        "value": "2,000"
+                    }
+                ]
+            },
+            "expect": {
+                "status": "4",
+                "message": "str:function does not accept ESDT payment",
+                "gas": "*",
+                "refund": "*"
+            }
+        }
+    ]
+}

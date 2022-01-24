@@ -1,0 +1,10 @@
+https://gateway.elrond.com/vm-values/query
+https://devnet-gateway.elrond.com/vm-values/query
+
+{
+    "scAddress": "erd1qqqqqqqqqqqqqpgqludsa3057sjkhjv8czysnrr4gm7lpuluf0tqvs8jgm",
+    "funcName": "isWhitelisted",
+    "args": [
+        "0x657264316b39657579353232346336783035387275716b37613968367977396e646e66306d72327a6d6d7a65647168726c323273323064717a6c336477390a"
+    ]
+}

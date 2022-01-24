@@ -1,0 +1,84 @@
+{
+    "name": "call reserve",
+    "steps": [
+        {
+            "step": "setState",
+            "accounts": {
+                "address:sc_creator": {
+                    "nonce": "0",
+                    "balance": "0",
+                    "storage": {}
+                },
+                "address:whitelisted": {
+                    "nonce": "0",
+                    "balance": "100",
+                    "storage": {}
+                },
+                "address:not_whitelisted": {
+                    "nonce": "0",
+                    "balance": "100",
+                    "storage": {}
+                }
+            },
+            "newAddresses": [
+                {
+                    "creatorAddress": "address:sc_creator",
+                    "creatorNonce": "0",
+                    "newAddress": "sc:nft"
+                }
+            ]
+        },
+        {
+            "step": "scDeploy",
+            "txId": "deploy",
+            "tx": {
+                "from": "address:sc_creator",
+                "contractCode": "file:../../../output/nft.wasm",
+                "value": "0",
+                "arguments": [
+                    "1",
+                    "100",
+                    "5",
+                    "0",
+                    "1000",
+                    "250"
+                ],
+                "gasLimit": "10,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "status": "0",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "scCall",
+            "txId": "lol",
+            "tx": {
+                "from": "address:sc_creator",
+                "to": "sc:nft",
+                "value": "0",
+                "function": "whitelistAddress",
+                "arguments": [
+                    "address:whitelisted"
+                ],
+                "gasLimit": "10,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "status": "0",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "setState",
+            "comment": "only set block info this time",
+            "currentBlockInfo": {
+                "blockTimestamp": "0"
+            }
+        }
+    ]
+}

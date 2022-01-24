@@ -1,0 +1,1 @@
+erdpy contract build ; tput setaf 1; echo "build done; let's go on test" ; tput sgr0 ; erdpy contract test
