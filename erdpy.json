@@ -1,0 +1,21 @@
+{
+    "contract": {
+        "deploy": {
+            "verbose": true,
+            "bytecode": "output/nft.wasm",
+            "recall-nonce": true,
+            "pem": "../../wallet/wallet-owner.pem",
+            "gas-limit": 59999999,
+            "arguments": [
+                500000000000000000,
+                1000,
+                10,
+                10,
+                1643313600,
+                1800
+            ],
+            "send": true,
+            "outfile": "deploy-mainnet.interaction.json"
+        }
+    }
+}
