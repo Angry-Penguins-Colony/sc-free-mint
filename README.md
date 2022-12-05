@@ -1,1 +1,1 @@
-# ping-pong-smart-contract
+Smart contract from our free mint
